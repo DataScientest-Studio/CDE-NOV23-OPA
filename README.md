@@ -4,9 +4,7 @@
 
 ### Auteur
 
-Oualid
-Dorian
-Samuel
+Oualid Dorian Samuel
 
 ## Schéma
 
