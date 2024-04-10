@@ -1,7 +1,12 @@
 # CDE-NOV23-OPA
 
-## Auteur
+## CryptoBot avec Binance
 
-Oualid
-Dorian
-Samuel
+### Auteur
+
+Oualid Dorian Samuel
+
+## Schéma
+
+    ├── Readme.md
+    └── 
