@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Settings>
+	<Binance>
+		<!-- Renseigner l'API Key -->
+		<api_key>XXX</api_key>
+		<!-- Renseigner l'API Secret> -->
+		<api_secret>YYY</api_secret>
+		<!-- Renseigner l'API Key testnet-->
+		<api_key_testnet>ZZZ</api_key_testnet>
+		<!-- Renseigner l'API Secret testnet> -->
+		<api_secret_testnet>AAA</api_secret_testnet>
+	</Binance>
+</Settings>
