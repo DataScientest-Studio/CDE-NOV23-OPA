@@ -1,0 +1,5 @@
+/home/ubuntu/Projet_OPA/app/db/opa_database.db
+_pycache__/
+env/
+*.env
+*.env.*

@@ -1,0 +1,30 @@
+# Utiliser une image de base officielle pour Python
+FROM python:3.11-slim
+
+# Définir le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copier les fichiers de dépendances dans le conteneur
+# COPY requirements.txt .
+# COPY binance_histo_crypto.py .
+# COPY binance_histo_symbol.py .
+# COPY Binance_Key.xml .
+# COPY my_dash.py .
+# COPY main.py .
+
+
+# Copier le reste des fichiers de l'application dans le conteneur
+COPY . .
+
+# Installer les dépendances
+RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install -r requirements.txt
+
+# # Supprimer le fichier opa_database.db
+# RUN rm /app/opa_database.db
+
+# Exposer le port sur lequel l'application va tourner
+EXPOSE 8050
+
+# Définir la commande pour lancer l'application avec Uvicorn
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: dockerfile
+    container_name: web
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      # - /home/ubuntu/Projet_OPA/app/db:/app/db  # Monter le répertoire de la base de données
+    depends_on:
+      - db  # Assure que MySQL démarre avant le service Python
+    environment:
+      # - DATABASE_URL=sqlite:///opa_database.db  # Exemple avec SQLite
+      - DB_HOST=mysql_db  # Nom du service MySQL pour l'hôte
+      - DB_NAME=crypto_db
+      - DB_USER=sam
+      - DB_PASSWORD=samword
+    networks:
+      - app-network
+
+  app:
+    build:
+      context: ./flask
+      dockerfile: dockerfile
+    container_name: flask_web
+    ports:
+      - "5050:5050"
+    volumes:
+      - .:/app
+      - ./binaries:/app/binaries
+    depends_on:
+      - db  # Assure que MySQL démarre avant le service Python
+    environment:
+      # - DATABASE_URL=sqlite:///opa_database.db  # Exemple avec SQLite
+      - DB_HOST=mysql_db  # Nom du service MySQL pour l'hôte
+      - DB_NAME=crypto_db
+      - DB_USER=sam
+      - DB_PASSWORD=samword
+    command: python flask/flask_api.py
+    networks:
+      - app-network
+
+  streamlit:
+    build:
+      context: ./streamlit
+      dockerfile: dockerfile
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"  # Port par défaut de Streamlit
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=mysql_db
+      - DB_NAME=crypto_db
+      - DB_USER=sam
+      - DB_PASSWORD=samword
+    command: python3 -m streamlit run streamlit/app.py
+    networks:
+      - app-network
+
+  dash:
+    build: 
+      context: ./dash
+      dockerfile: dockerfile
+    container_name: dash
+    ports:
+      - "8050:8050"  # Mapper le port 8050 pour l'application Dash
+    volumes:
+      - .:/app  # Monter le répertoire courant dans le conteneur Dash
+      # - /home/ubuntu/Projet_OPA/app/db:/app/db  # Monter le répertoire de la base de données
+    depends_on:
+      - db  # Assure que MySQL démarre avant le service Python
+      - web  # dash dépend de web
+    command: python my_dash.py  # Commande pour exécuter l'application Dash
+    environment:
+      - DASH_ENV=production  # Variable d'environnement pour Dash
+      # - DATABASE_URL=sqlite:///opa_database.db  # Exemple avec SQLite
+      - DB_HOST=mysql_db  # Nom du service MySQL pour l'hôte
+      - DB_NAME=crypto_db
+      - DB_USER=sam
+      - DB_PASSWORD=samword
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: datascience
+      MYSQL_DATABASE: crypto_db
+      MYSQL_USER: sam
+      MYSQL_PASSWORD: samword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
