@@ -26,7 +26,7 @@ Ce projet a pour objectif de créer un bot de trading pour investir sur le march
 
 ## Démarrer le projet
 
-1. mettre à jour le fichier Binance_Key.xml avec vos clés API Binance
+1. mettre à jour le fichier `Binance_Key.xml` avec **vos clés API Binance**
 
 ``` python
     <Binance>
