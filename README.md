@@ -11,18 +11,53 @@ Ce projet a pour objectif de créer un bot de trading pour investir sur le march
 
 ## Schéma dossier
 
-    binaries/
-    ├── rfc.sav
-    ├── rfr.sav
-    dash/
-    ├── dockerfile
-    ├── requirements.txt
-    flask/
-    ├── dockerfile
-    ├── requirements.txt
-    ├
-    ├── Readme.md
-    └── 
+    .dockerignore
+    │   ajout_test.py                                       <- Scripts pour tester le code
+    │   binance_histo_crypto.py                             <- Scripts pour gérer l'historisation des mouvements de crypto monnaie
+    │   binance_histo_symbol.py                             <- Scripts pour gérer l'ajout de nouvelle crypto
+    │   Binance_Key.xml                                     <- xml pour mettre la clé APII Binance
+    │   binance_maj_histo_crypto.py                         <- Scripts pour mettre à jour les données d'historisation
+    │   docker-compose.yml                                  <- docker compose : fichier de configuration pour démarrer l'applicatif
+    │   init.sql                                            <- script d'initialisation des bases mySQL
+    │   main.py                                             <- Script main pour les points API (FAST API)
+    │   my_dash.py                                          <- Script principal Dash
+    │   README.md
+    │
+    ├───assets                                              <- éléments Dash pour la mise en page (css, images, etc..)
+    │
+    ├───binaries                                            <- Modèles entraînés et sérialisés, prédictions de modèles ou résumés de modèles
+    │       rfc.sav
+    │       rfr.sav
+    │
+    ├───dash                                                <- Docker Dash
+    │       dockerfile
+    │       requirements.txt                                <- Le fichier d'exigences
+    │
+    ├───docs                                                <- documentations
+    │   │
+    │   ├───archive
+    │   │
+    │   └───logo
+    │
+    ├───flask                                               <- Docker Flask
+    │       dockerfile
+    │       flask_api.py
+    │       historical_data_sample.csv
+    │       old
+    │       requirements.txt
+    │
+    ├───initdb
+    │       init.sql
+    │
+    ├───streamlit                                           <- Docker Streamlit
+    │       app.py
+    │       dockerfile
+    │       requirements.txt
+    │
+    ├───web                                                <- Docker Fastapi
+    │       dockerfile
+    │       requirements.txt
+    │
 
 ## Démarrer le projet
 
