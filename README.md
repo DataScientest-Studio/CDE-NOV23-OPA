@@ -6,8 +6,8 @@ Ce projet a pour objectif de créer un bot de trading pour investir sur le march
 
 ## Auteur
 
-- Oualid Lemtine
-- Samuel Vicat
+- Oualid L.
+- Samuel V.
 
 ## Schéma dossier
 
