@@ -41,5 +41,7 @@ Ce projet a pour objectif de créer un bot de trading pour investir sur le march
     </Binance> 
 ```
 
-2. lancer dans un shell
+2. A la racine du projet, lancer dans un shell
+
+
  `docker compose up -d`
