@@ -12,3 +12,5 @@ scikit-learn==1.4.1.post1
 SQLAlchemy==2.0.20
 statsmodels==0.14.1
 mysql-connector-python==8.0.26  # Ou PyMySQL pour interagir avec MySQL
+# websocket
+websocket-client

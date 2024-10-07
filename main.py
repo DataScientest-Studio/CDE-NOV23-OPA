@@ -91,21 +91,21 @@ def current_user(username: str = Depends(authenticate)):
 
 # Endpoints : Appel du module Binance pour récupérer les transactions
 @app.get("/getcrypto")
-def getcrypto():
+def getcrypto(username: str = Depends(authenticate)):
     # Appeler la fonction du script pour obtenir les données
     data = get_data_from_db_crypto()
     return {"data": data}
 
 # Endpoints : Appel du module Binance pour récupérer les symboles
 @app.get("/getsymbol")
-def getcrypto():
+def getcrypto(username: str = Depends(authenticate)):
     # Appeler la fonction du script pour obtenir les données
     data = get_data_from_db_symbol()
     return {"data": data}
 
 # Endpoints : Appel du module Binance pour la MAJ de la data
 @app.get("/majcrypto")
-def getcrypto():
+def getcrypto(username: str = Depends(authenticate)):
     # Appeler la fonction du script pour obtenir les données
     try:
         maj_data_from_db()
@@ -118,7 +118,7 @@ def getcrypto():
 
 # Endpoints : Appel du module Binance pour la MAJ de la data 2
 @app.get("/getmajcrypto")
-def getcrypto():
+def getcrypto(username: str = Depends(authenticate)):
     try:
         data = get_data_from_db2()  # Assuming this function retrieves your data
         return {

@@ -42,8 +42,6 @@ Ce projet a pour objectif de créer un bot de trading pour investir sur le march
     ├───flask                                               <- Docker Flask
     │       dockerfile
     │       flask_api.py
-    │       historical_data_sample.csv
-    │       old
     │       requirements.txt
     │
     ├───initdb
